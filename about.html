@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raza Online Service Tulsia - आधार, बैंकिंग और CSC सेवाएँ</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --accent-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .hindi {
+            font-family: 'Nirmala UI', 'Arial Unicode MS', sans-serif;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .services {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .service-icon {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .service-content ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-content ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .about {
+            background-color: var(--light-color);
+            padding: 4rem 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Raza <span>Online Service</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="#services">सेवाएँ</a></li>
+                    <li><a href="#about">हमारे बारे में</a></li>
+                    <li><a href="#contact">संपर्क</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="hindi fade-in">आपकी सभी ऑनलाइन सेवाओं का विश्वसनीय केंद्र</h1>
+            <p class="hindi fade-in delay-1">रज़ा ऑनलाइन सर्विस तुलसिया में आपका स्वागत है। हम आधार, बैंकिंग और सीएससी से संबंधित सभी सेवाएं प्रदान करते हैं।</p>
+            <a href="#contact" class="btn hindi fade-in delay-2">अभी संपर्क करें</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi">हमारी सेवाएँ</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="hindi">आधार सेवाएँ</h3>
+                        <ul class="hindi">
+                            <li>मोबाइल नंबर/ईमेल अपडेट</li>
+                            <li>पता परिवर्तन</li>
+                            <li>आधार प्रिंट (फिंगरप्रिंट द्वारा)</li>
+                        </ul>
+                        <a href="#contact" class="btn hindi">अधिक जानें</a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="hindi">बैंक ऑफ बड़ौदा - ग्राहक सेवा केंद्र</h3>
+                        <ul class="hindi">
+                            <li>जनधन खाता खोलना</li>
+                            <li>निकासी और जमा</li>
+                            <li>पासबुक प्रिंटिंग</li>
+                            <li>आधार सीडिंग</li>
+                            <li>सरकारी योजनाओं का लाभ</li>
+                        </ul>
+                        <a href="#contact" class="btn hindi">अधिक जानें</a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="hindi">CSC सेवाएँ</h3>
+                        <ul class="hindi">
+                            <li>पैन कार्ड</li>
+                            <li>बिजली बिल भुगतान</li>
+                            <li>टिकट बुकिंग (रेल, बस, हवाई)</li>
+                            <li>वाहन बीमा</li>
+                            <li>ड्राइविंग लाइसेंस आवेदन</li>
+                            <li>डीटीएच रिचार्ज</li>
+                            <li>पानी/गैस बिल भुगतान</li>
+                        </ul>
+                        <a href="#contact" class="btn hindi">अधिक जानें</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi">हमारे बारे में</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="hindi">रज़ा ऑनलाइन सर्विस तुलसिया</h2>
+                    <p class="hindi">हम तुलसिया क्षेत्र में आधार, बैंकिंग और सीएससी से संबंधित सेवाएं प्रदान करने वाली एक विश्वसनीय संस्था हैं। हमारा उद्देश्य स्थानीय निवासियों को उनके घर के नजदीक ही सभी आवश्यक डिजिटल सेवाएं प्रदान करना है।</p>
+                    <p class="hindi">हमारे केंद्र पर अनुभवी और प्रशिक्षित स्टाफ आपकी सभी समस्याओं का समाधान करने के लिए तत्पर हैं। हम ग्राहकों को सरल, सुविधाजनक और सुरक्षित सेवाएं प्रदान करने के लिए प्रतिबद्ध हैं।</p>
+                </div>
+                <div class="contact-info">
+                    <h3 class="hindi">संपर्क जानकारी</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="hindi">पता: पुराना मार्केट तुलसिया</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>9508613503</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>razaosp.in@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>www.razaosptulsia.in</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi">हमसे संपर्क करें</h2>
+            </div>
+            <div class="contact-form-container">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="आपका नाम" required class="hindi">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="आपका ईमेल" required class="hindi">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="आपका फोन नंबर" required class="hindi">
+                    </div>
+                    <div class="form-group">
+                        <select id="service" required class="hindi">
+                            <option value="" disabled selected>सेवा चुनें</option>
+                            <option value="aadhaar" class="hindi">आधार सेवाएँ</option>
+                            <option value="bank" class="hindi">बैंक ऑफ बड़ौदा सेवाएँ</option>
+                            <option value="csc" class="hindi">CSC सेवाएँ</option>
+                            <option value="other" class="hindi">अन्य</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="आपका संदेश" class="hindi"></textarea>
+                    </div>
+                    <button type="submit" class="btn hindi">संदेश भेजें</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="hindi">रज़ा ऑनलाइन सर्विस</h3>
+                    <p class="hindi">तुलसिया क्षेत्र में आपकी सभी डिजिटल और बैंकिंग सेवाओं का विश्वसनीय केंद्र।</p>
+                </div>
+                <div class="footer-column">
+                    <h3 class="hindi">लिंक</h3>
+                    <ul>
+                        <li><a href="#home" class="hindi">होम</a></li>
+                        <li><a href="#services" class="hindi">सेवाएँ</a></li>
+                        <li><a href="#about" class="hindi">हमारे बारे में</a></li>
+                        <li><a href="#contact" class="hindi">संपर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="hindi">सेवाएँ</h3>
+                    <ul>
+                        <li><a href="#" class="hindi">आधार सेवाएँ</a></li>
+                        <li><a href="#" class="hindi">बैंकिंग सेवाएँ</a></li>
+                        <li><a href="#" class="hindi">CSC सेवाएँ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="hindi">संपर्क करें</h3>
+                    <ul>
+                        <li class="hindi">पुराना मार्केट तुलसिया</li>
+                        <li>9508613503</li>
+                        <li>razaosp.in@gmail.com
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Raza Online Service Tulsia. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const service = document.getElementById('service').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Here you would typically send this data to a server
+                    // For this example, we'll just show an alert
+                    alert(`धन्यवाद ${name}! आपका संदेश प्राप्त हुआ है। हम जल्द ही आपसे संपर्क करेंगे।`);
+                    
+                    // Reset the form
+                    contactForm.reset();
+                });
+            }
+            
+            // Animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Run once on page load
+            fadeInOnScroll();
+            
+            // Then run on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
+</body>
+</html>
